@@ -80,7 +80,7 @@ def metrics():
     connection.close()
     count_post = len(posts)
     response = app.response_class(
-            response=json.dumps({"status":"success","code":0,"data":{"db_connection_count": connect_request, "post_count": count_post}}), #Considering The /metrics endpoint response should NOT be hardcoded.
+            response=json.dumps({"status":"success","code":0,"data":{"db_connection_count": connect_request, "post_count": count_post}}), 
             status=200,
             mimetype='application/json'
     )
