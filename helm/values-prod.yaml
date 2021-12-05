@@ -1,0 +1,35 @@
+namespace:
+  name: prod
+
+service:
+  port: 7111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
+
+image:
+  repository: elronia/techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 5
+
+resources:
+  requests:
+    cpu: 350m
+    memory: 128Mi
+  limits: 
+    cpu: 500m
+    memory: 256Mi
+
+containerPort: 3111
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 3111
+
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 3111
